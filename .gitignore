@@ -1,0 +1,45 @@
+import java.util.Random;
+/**
+ * class that has a 7 digit ticket number
+ * 
+ * @author Carl Pascarella
+ * @version 2/2/2016
+ */
+public class Ticket
+{
+    private Random randomGenerator;
+    private int ticketNum;
+
+    /**
+     * Constructor for objects of class Ticket
+     */
+    public Ticket()
+    {
+        randomGenerator = new Random();
+        generateTicket();
+    }
+
+    /**
+     * method to generate a 7 digit ticket number
+     */
+    public void generateTicket(){
+        ticketNum = (randomGenerator.nextInt(8999999) + 1000001);
+    }
+    
+    /**
+     * method to return the ticket number
+     * @return
+     */
+    public int getTicketNum(){
+        return ticketNum;
+    }
+    
+    /**
+     * displays the ticket number
+     */
+    public void printTicket(){
+        System.out.println(ticketNum);
+    }
+    
+    
+}
