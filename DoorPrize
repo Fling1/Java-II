@@ -1,0 +1,71 @@
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+/**
+ * small lottery-like machine that determines a winner and second place out 
+ * of a specified ammount of tickets.
+ * 
+ * 
+ * @author Carl Pascarella
+ * @version 2/2/2016
+ */
+public class DoorPrize
+{
+    // 
+    private ArrayList <Ticket> ticketList;
+    private Random randomGenerator;
+    private Scanner keybd;
+    private int tickets;
+
+    /**
+     * Constructor for objects of class DoorPrize
+     */
+    public DoorPrize()
+    {
+        ticketList = new ArrayList<>();
+        randomGenerator = new Random();
+        keybd = new Scanner(System.in);
+        System.out.println("How many tickets are needed");
+        tickets = keybd.nextInt();
+        populate();
+    }
+
+    /**
+     * populate the arraylist with a specified ammount of tickets
+     */
+    public void populate(){
+        for(int index = 0;index < tickets; index++){
+            ticketList.add(new Ticket());
+        }
+        System.out.println("Your numbers are:");
+        for(int index = 0;index < tickets; index++){
+            ticketList.get(index).printTicket();
+        }
+    }
+
+    /**
+     * randomly selects and announces a winner
+     */
+    public void chooseWinner(){
+        int winner = randomGenerator.nextInt(tickets);
+        System.out.println("The winning number is: " + ticketList.get(winner).getTicketNum());
+        winner = winner + 1;
+        System.out.println("Ticket number " + winner +" has won.");
+    }
+
+    /**
+     * determines the lowest ticket, and gives it second place
+     */
+    public void secondPlace(){
+        int second = 0;
+        for(int index = 0;index < tickets; index++){
+            if(ticketList.get(index).getTicketNum() < ticketList.get(second).getTicketNum()){
+                second = index;
+            }
+        }
+        System.out.println("The lowest ticket number is: " + ticketList.get(second).getTicketNum());
+        second = second + 1;
+        System.out.println("Ticket number " + second + " has won second place.");
+    }
+
+}
