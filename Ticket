@@ -35,7 +35,7 @@ public class Ticket
     }
     
     /**
-     * displays the ticket number
+     * displays the ticket number 
      */
     public void printTicket(){
         System.out.println(ticketNum);
